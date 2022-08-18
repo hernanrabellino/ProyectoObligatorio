@@ -188,3 +188,14 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.product-title {
+  font-size: 3rem;
+  padding: 20px;
+  text-align: center;
+}
+
+.desc-products { 
+  text-align: center;
+
+}
