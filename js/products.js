@@ -1,9 +1,9 @@
-let categoriesArray = [];
 
-function showProductList(productsArray) {
+function showProductList(Array) {
     let htmlContentToAppend = "";
-    for (let i = 0; i < productsArray.length; i++) {
-        let product = productsArray[i];
+    for (let i = 0; i < Array.length; i++) {
+        let product = Array[i];
+        
         htmlContentToAppend += `
         <div class="list-group-item list-group-item-action">
             <div class="row">
@@ -24,15 +24,15 @@ function showProductList(productsArray) {
         </div>
         `
         document.getElementById("product-list").innerHTML = htmlContentToAppend;
+        console.log(Array)
     }
 }
 
 
-document.addEventListener("DOMContentLoaded", async (e) => {
+document.addEventListener("DOMContentLoaded", async () => {
     const resultObj = await getJSONData(CAR_LIST);
     if (resultObj.status === "ok") {
-      categoriesArray = resultObj.data.products;
-      showProductList(categoriesArray);
+    let showProductsArray = resultObj.data.products;
+      showProductList(showProductsArray);
     }
 });
-
