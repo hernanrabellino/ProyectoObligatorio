@@ -17,16 +17,3 @@ document.addEventListener("DOMContentLoaded", function(){
             return 
     }});
 });
-
-
-// // function validarFormulario(evento) {
-// //     let email = document.getElementById('floatingEmail').value;
-// //     let password = document.getElementById('floatingPassword').value;
-// //     if (email.length == 0 || password.length == 0) {
-// //         evento.preventDefault();
-// //         showAlertError();
-// //         return;
-        
-// //     }
-    
-// }

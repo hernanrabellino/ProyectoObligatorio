@@ -31,9 +31,6 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a id="userName" class="nav-link" href="my-profile.html">asd</a>
-          </li>
-          <li class="nav-item">
             <a id="user" class="nav-link" href="my-profile.html"></a>
           </li>
         </ul>
@@ -54,6 +51,9 @@
     <div class="row">
       <div class="col text-end">
         <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+          <form>
+          <input class="mx-1" type="text" name="" id="search-item" placeholder="Buscar.." onkeyup="search()">
+        </form>
           <input type="radio" class="btn-check" name="options" id="sortAsc">
           <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down-alt"></i> $</label>
           <input type="radio" class="btn-check" name="options" id="sortDesc">
@@ -86,6 +86,7 @@
       </div>
     </div>
     <div class="list-group" id="product-list">
+
     </div>
   </main>
 
