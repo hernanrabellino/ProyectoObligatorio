@@ -1,6 +1,6 @@
-const ORDER_ASC_BY_NAME = "AZ";
-const ORDER_DESC_BY_NAME = "ZA";
-const ORDER_BY_PROD_COUNT = "Cant.";
+// const ORDER_ASC_BY_NAME = "AZ";
+// const ORDER_DESC_BY_NAME = "ZA";
+// const ORDER_BY_PROD_COUNT = "Cant.";
 let currentCategoriesArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok"){
             currentCategoriesArray = resultObj.data
             showCategoriesList()
-            //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
+            // sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
 
