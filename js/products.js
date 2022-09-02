@@ -8,15 +8,15 @@ let currentProductsArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
-// ------------------------------------------------------
 
+// ------------------------------------------------------
 function showProductList() {
     let htmlContentToAppend = "";
 
     document.getElementById("subtitle").innerHTML = `<p> Verás aquí todos los productos de la categoría ${catName} </p>`
 
     for (let i = 0; i < currentProductsArray.length; i++) {
-        let product = currentProductsArray[i];
+        const product = currentProductsArray[i];
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
 
@@ -53,6 +53,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
+
+
+const search = document.querySelector('#filter-input');
+
+document.addEventListener('DOMContentLoaded', function () {
+    search.addEventListener('keyup', filterNames);
+})
+
+
+function filterNames() {
+    let filterValue = document.getElementById('filter-input').value.toUpperCase();
+
+    let names = document.getElementById('product-list');
+    let product = names.querySelectorAll('.product');
+
+    for (let i = 0; i < product.length; i++) {
+        let a = product[i].getElementsByTagName('div')[0];
+        if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
+            product[i].style.display = '';
+        } else {
+            product[i].style.display = 'none';
+        }
+
+    }
+}
 
 function sortAndShowProducts(sortCriteria, productsArray) {
     currentSortCriteria = sortCriteria;
