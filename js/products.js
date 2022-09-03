@@ -39,10 +39,11 @@ function showProductList() {
             </div>
         </div>
         `
-            document.getElementById("product-list").innerHTML = htmlContentToAppend;
         }
     }
+    document.getElementById("product-list").innerHTML = htmlContentToAppend;
 }
+
 
 document.addEventListener("DOMContentLoaded", async () => {
     const resultObj = await getJSONData(url);
@@ -54,31 +55,29 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-
+// for live search items
 const search = document.querySelector('#filter-input');
+search.addEventListener('keyup', filter);
 
-document.addEventListener('DOMContentLoaded', function () {
-    search.addEventListener('keyup', filterNames);
-})
-
-
-function filterNames() {
+function filter() {
     let filterValue = document.getElementById('filter-input').value.toUpperCase();
-
     let names = document.getElementById('product-list');
-    let product = names.querySelectorAll('.product');
-
-    for (let i = 0; i < product.length; i++) {
-        let a = product[i].getElementsByTagName('div')[0];
+    let products = names.querySelectorAll('.product');
+    for (let i = 0; i < products.length; i++) {
+        let a = products[i].getElementsByTagName('div')[0];
         if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
-            product[i].style.display = '';
+            products[i].style.display = '';
+
         } else {
-            product[i].style.display = 'none';
+            products[i].style.display = 'none';
         }
 
     }
+
 }
 
+
+// show and order the products
 function sortAndShowProducts(sortCriteria, productsArray) {
     currentSortCriteria = sortCriteria;
 
@@ -91,6 +90,8 @@ function sortAndShowProducts(sortCriteria, productsArray) {
     showProductList();
 }
 
+
+// order the array based on the criteria indicated 
 function sortProducts(criteria, array) {
     let result = [];
     if (criteria === ORDER_ASC_BY_COST) {
@@ -115,7 +116,6 @@ function sortProducts(criteria, array) {
             return 0;
         });
     }
-
     return result;
 }
 
@@ -144,7 +144,6 @@ document.getElementById("clearRangeFilter").addEventListener("click", function (
 
 document.getElementById("rangeFilterCount").addEventListener("click", function () {
 
-
     minCount = document.getElementById("rangeFilterCountMin").value;
     maxCount = document.getElementById("rangeFilterCountMax").value;
 
@@ -164,4 +163,3 @@ document.getElementById("rangeFilterCount").addEventListener("click", function (
 
     showProductList();
 });
-
