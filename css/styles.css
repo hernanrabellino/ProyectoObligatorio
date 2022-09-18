@@ -195,7 +195,7 @@ a.custom-card:hover {
   text-align: center;
 }
 
-.desc-products { 
+.desc-products {
   text-align: center;
 
 }
@@ -218,4 +218,8 @@ a.custom-card:hover {
   width: 100%;
   padding: 10px;
   text-align: center;
+}
+
+.checked {
+  color: orange;
 }

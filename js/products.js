@@ -10,18 +10,24 @@ let minCount = undefined;
 let maxCount = undefined;
 
 // ------------------------------------------------------
+
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
+}
+
 function showProductList() {
     let htmlContentToAppend = "";
 
-    document.getElementById("subtitle").innerHTML = `<p> Verás aquí todos los productos de la categoría ${catName} </p>`
-
+    document.getElementById("subtitle").innerHTML = `<p class="desc"> Verás aquí todos los productos de la categoría ${catName} </p>`
     for (let i = 0; i < currentProductsArray.length; i++) {
         const product = currentProductsArray[i];
+        // console.log(product)
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
 
             htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action product">
+        <div onclick="setProductID(${product.id})" class="list-group-item list-group-item-action product">
             <div class="row">
                 <div class="col-3">
                     <img src=" ${product.image} " alt="product image" class="img-thumbnail">

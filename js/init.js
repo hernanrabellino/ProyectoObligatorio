@@ -16,7 +16,11 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
-const url = PRODUCTS_URL + localStorage.getItem('catID') + EXT_TYPE
+const url = PRODUCTS_URL + localStorage.getItem('catID') + EXT_TYPE;
+
+const PRODUCTS_INFO = PRODUCT_INFO_URL + localStorage.getItem("productID") + EXT_TYPE;
+
+const COMMENTS_URL = PRODUCT_INFO_COMMENTS_URL + localStorage.getItem("productID") + EXT_TYPE
 
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -27,9 +31,9 @@ let hideSpinner = function () {
 }
 
 
-let getJSONData = function (url) {
+let getJSONData = async function (url) {
   let result = {};
-  showSpinner();
+  // showSpinner();
   return fetch(url)
     .then(response => {
       if (response.ok) {
@@ -41,16 +45,18 @@ let getJSONData = function (url) {
     .then(function (response) {
       result.status = 'ok';
       result.data = response;
-      hideSpinner();
+      // hideSpinner();
       return result;
     })
     .catch(function (error) {
       result.status = 'error';
       result.data = error;
-      hideSpinner();
+      // hideSpinner();
       return result;
     });
 }
 
 // get the value of userName and add it to the element with id user 
 document.getElementById('user').innerHTML = localStorage.getItem("userName");
+
+
