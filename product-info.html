@@ -14,33 +14,15 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="main.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-            <a id="user" class="nav-link" href="my-profile.html"></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
   <main>
     <div id="container" class="m-5">
       <div id="product">
+      </div>
+      <div class="mt-4 d-flex row">
+        <h3> Productos Relacionados </h3>
+        <div class="d-flex col text-center" id="relatedProducts">
+
+        </div>
       </div>
       <p class="mt-5 fs-4">Comentarios</p>
       <div id="newComments" class="mt-1 fs-6">
@@ -78,16 +60,9 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
-  <!-- <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div> -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/navbar.js"></script>
   <script src="js/product-info.js"></script>
 </body>
 

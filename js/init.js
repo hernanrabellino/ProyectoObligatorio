@@ -56,7 +56,4 @@ let getJSONData = async function (url) {
     });
 }
 
-// get the value of userName and add it to the element with id user 
-document.getElementById('user').innerHTML = localStorage.getItem("userName");
-
 

@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         resultObj.data;
         // console.log(resultObj.data)
         showProductInfo(resultObj.data);
+        relatedProducts(resultObj.data)
     }
     const result = await getJSONData(COMMENTS_URL);
     if (result.status === "ok") {
@@ -15,6 +16,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 }
 );
+
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
+}
 
 function showProductInfo(product) {
     let htmlContentToAppend = "";
@@ -35,14 +41,31 @@ function showProductInfo(product) {
      Imagenes Ilustrativas
      </b>
         `
+    console.log(product);
     for (let i = 0; i < product.images.length; i++) {
         htmlContentToAppend += `
             <div class="d-inline-block mt-2">
             <img class="p-2" style="width: 25rem" src="${product.images[i]}"
             </div>
             `
+
     }
     document.getElementById("product").innerHTML = htmlContentToAppend;
+}
+
+function relatedProducts(product) {
+    let htmlContentToAppend = "";
+    for (let i = 0; i < product.relatedProducts.length; i++) {
+        let relatedProduct = product.relatedProducts[i];
+        console.log(relatedProduct)
+        htmlContentToAppend += `
+    <div class="mb-1 list-group-item-action my-2" onclick="setProductID(${relatedProduct.id})">
+        <h3 class="mb-3"> ${relatedProduct.name}</h2>    
+        <img class="p-2" style="width: 25rem" src="${relatedProduct.image}">
+     </div>
+        `
+    }
+    document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
 }
 
 const rating = {
@@ -78,7 +101,7 @@ function formatName(str) {
         resultStr += " " + token;
     }
     return resultStr;
-};  
+};
 
 
 const addCommentBtn = document.getElementById("sendCommentBtn");
@@ -87,7 +110,7 @@ const selectScore = document.getElementById("rating");
 const newComments = document.getElementById("newComments")
 
 addCommentBtn.addEventListener("click", (evt) => {
-    date = new Date();
+    let date = new Date();
     if (textarea.value) localStorage.setItem("comment", textarea.value);
     if (localStorage.getItem("comment")) {
         evt.preventDefault();
@@ -107,7 +130,7 @@ addCommentBtn.addEventListener("click", (evt) => {
     localStorage.setItem('comment', "");
 });
 
-// Al dar click al boton enviar se va a guardar la fecha actual en date, 
+// Al dar click al boton enviar se va a guardar la fecha actual en date,
 // el mensaje que se haya ingresado en el textarea se va a guardar en el localstorage
 // y se va a guardar en la variable score la valoracion que le hayas puesto
 // todas esas cosas se van agregar en el div con id newComments 
