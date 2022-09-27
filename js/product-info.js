@@ -1,5 +1,6 @@
 let commentsArray = [];
 
+
 document.addEventListener("DOMContentLoaded", async () => {
     const resultObj = await getJSONData(PRODUCTS_INFO);
     if (resultObj.status === "ok") {
@@ -24,6 +25,15 @@ function setProductID(id) {
 
 function showProductInfo(product) {
     let htmlContentToAppend = "";
+    let carouselImages = "";
+    for (let i = 0; i < product.images.length; i++) {
+        activeItem = i == 0 ? "active" : "";
+        carouselImages += `
+        <div class="carousel-item ${activeItem}">
+            <img src="${product.images[i]}" class="d-block w-100 img-thumbnail">
+        </div>
+            `
+    }
     htmlContentToAppend += `
     <div class="mb-1">
         <h1> ${product.name}</h1>
@@ -37,19 +47,27 @@ function showProductInfo(product) {
         <b class="fs-5"> Cantidad de vendidos </b>
             <p>${product.soldCount}</p> 
      </div>
-     <b class="fs-5">
+     <h3>
      Imagenes Ilustrativas
-     </b>
+     </h3>
+     <div class="d-flex col justify-content-center">
+            <div id="carouselExampleControls" class="w-50 carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    ${carouselImages}
+            </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+            </div>
+        </div>
         `
     console.log(product);
-    for (let i = 0; i < product.images.length; i++) {
-        htmlContentToAppend += `
-            <div class="d-inline-block mt-2">
-            <img class="p-2" style="width: 25rem" src="${product.images[i]}"
-            </div>
-            `
 
-    }
     document.getElementById("product").innerHTML = htmlContentToAppend;
 }
 
@@ -129,8 +147,3 @@ addCommentBtn.addEventListener("click", (evt) => {
     }
     localStorage.setItem('comment', "");
 });
-
-// Al dar click al boton enviar se va a guardar la fecha actual en date,
-// el mensaje que se haya ingresado en el textarea se va a guardar en el localstorage
-// y se va a guardar en la variable score la valoracion que le hayas puesto
-// todas esas cosas se van agregar en el div con id newComments 
