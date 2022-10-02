@@ -27,9 +27,9 @@ function showProductInfo(product) {
     let htmlContentToAppend = "";
     let carouselImages = "";
     for (let i = 0; i < product.images.length; i++) {
-        activeItem = i == 0 ? "active" : "";
+        activeImage = i == 0 ? "active" : "";
         carouselImages += `
-        <div class="carousel-item ${activeItem}">
+        <div class="carousel-item ${activeImage}">
             <img src="${product.images[i]}" class="d-block w-100 img-thumbnail">
         </div>
             `
@@ -77,7 +77,7 @@ function relatedProducts(product) {
         let relatedProduct = product.relatedProducts[i];
         console.log(relatedProduct)
         htmlContentToAppend += `
-    <div class="mb-1 list-group-item-action my-2" onclick="setProductID(${relatedProduct.id})">
+    <div class="mb-1 list-group-item-action my-2 " onclick="setProductID(${relatedProduct.id})">
         <h3 class="mb-3"> ${relatedProduct.name}</h2>    
         <img class="p-2" style="width: 25rem" src="${relatedProduct.image}">
      </div>
