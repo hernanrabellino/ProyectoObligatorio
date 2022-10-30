@@ -22,6 +22,8 @@ const PRODUCTS_INFO = PRODUCT_INFO_URL + localStorage.getItem("productID") + EXT
 
 const COMMENTS_URL = PRODUCT_INFO_COMMENTS_URL + localStorage.getItem("productID") + EXT_TYPE
 
+const CART_INFO = CART_INFO_URL + 25801 + EXT_TYPE;
+
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
 }
@@ -55,5 +57,16 @@ let getJSONData = async function (url) {
       return result;
     });
 }
+
+function formatName(str) {
+  if (str.includes('@')) {
+      return str.split('@')[0] }
+  let resultStr = '';
+  for (let token of str.split('_')) {
+      token = token.charAt(0).toUpperCase() + token.slice(1);
+      resultStr += " " + token;
+  }
+  return resultStr;
+};
 
 

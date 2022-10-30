@@ -27,7 +27,7 @@ function showProductInfo(product) {
     let htmlContentToAppend = "";
     let carouselImages = "";
     for (let i = 0; i < product.images.length; i++) {
-        activeImage = i == 0 ? "active" : "";
+        let activeImage = i == 0 ? "active" : "";
         carouselImages += `
         <div class="carousel-item ${activeImage}">
             <img src="${product.images[i]}" class="d-block w-100 img-thumbnail">
@@ -37,6 +37,7 @@ function showProductInfo(product) {
     htmlContentToAppend += `
     <div class="mb-1">
         <h1> ${product.name}</h1>
+        <button onclick="" type="button" id="buyItem" class="btn btn-primary">Comprar</button>
      <hr>
         <b class="fs-5"> Precio </b>
             <p>${product.currency} ${product.cost}</p>
@@ -111,15 +112,6 @@ function showComments(commentsArray) {
         document.getElementById("comments").innerHTML = htmlContentToAppend;
     }
 }
-
-function formatName(str) {
-    let resultStr = '';
-    for (let token of str.split('_')) {
-        token = token.charAt(0).toUpperCase() + token.slice(1);
-        resultStr += " " + token;
-    }
-    return resultStr;
-};
 
 
 const addCommentBtn = document.getElementById("sendCommentBtn");

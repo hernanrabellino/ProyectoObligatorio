@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" id="navbarDarkDropdownMenuLink" role="button" 
-            data-bs-toggle="dropdown" aria-expanded="false">${localStorage.getItem("userName")}</a>
+            data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user fa-2xs mx-1"></i>${formatName(localStorage.getItem("userName"))}</a>
             <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">
               <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
               <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
@@ -35,3 +35,4 @@ document.addEventListener("DOMContentLoaded", () => {
     `
   document.getElementsByTagName("body")[0].insertAdjacentElement("beforebegin", nav);
 });
+

@@ -13,18 +13,152 @@
 
 <body>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div id="cart">
     </div>
+    <div class="container px-3 my-5 clearfix" id="controls">
+      <div class="d-flex row">
+        <h2>Tipo de envío</h2>
+        <form action="#" method="get" id="form" class="needs-validation" novalidate>
+          <fieldset class="form-group">
+            <div class="row mt-3">
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="0.15" checked>
+                  <label class="form-check-label" for="gridRadios1">
+                    Premium 2 a 5 días (15%)
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="0.07">
+                  <label class="form-check-label" for="gridRadios2">
+                    Express 5 a 8 días (7%)
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="0.05">
+                  <label class="form-check-label" for="gridRadios3">
+                    Standard 12 a 15 días (5%)
+                  </label>
+                </div>
+              </div>
+            </div>
+            <h3 class="mt-3">Dirección de envío</h3>
+            <div class="form-group mt-3 w-50">
+              <label for="formGroupExampleInput" class="form-label">Calle</label>
+              <input type="text" class="form-control" id="calle" required>
+              <div class="invalid-feedback">Debes ingresar un Número de Calle</div>
+            </div>
+            <div class="form-group mt-2 w-50">
+              <label for="formGroupExampleInput2" class="form-label">Esquina</label>
+              <input type="text" class="form-control" id="esquina" required>
+              <div class="invalid-feedback">Debes ingresar un Número de Esquina</div>
+            </div>
+            <div class="form-group mt-2 w-50">
+              <label for="formGroupExampleInput2" class="form-label">Número</label>
+              <input type="text" class="form-control" id="numero" required>
+              <div class="invalid-feedback">Debes ingresar un Número de Puerta</div>
+            </div>
+          </fieldset>
+          <hr>
+      </div>
+      <div class="mt-3">
+        <h3>Costos</h3>
+        <div class="list-group-item">
+          <div class="row">
+            <div class="col-11">
+              <div>
+                Subtotal
+              </div>
+              <small class="text-muted">Costo unitario del producto por cantidad</small>
+            </div>
+            <div class="col" id="costSubtotal">
+            </div>
+          </div>
+
+        </div>
+        <div class="list-group-item">
+          <div class="row">
+            <div class="col-11">
+              <div>
+                Costo de envío
+              </div>
+              <small class="text-muted">Segun tipo de envío</small>
+            </div>
+            <div class="col" id="shippingCost">
+            </div>
+          </div>
+        </div>
+        <div class="list-group-item">
+          <div class="row">
+            <div class="col-11">
+              Total ($)
+            </div>
+            <div class="col" id="total">
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-4">
+      <h3 class="mt-2">Forma de pago</h3>
+
+      <div>
+        <div class="d-inline">Seleccione una forma de pago</div>
+        <button type="button" class="btn btn-link ps-2" data-bs-toggle="modal" data-bs-target="#modalCompra"
+          id="modalButton">Seleccionar</button>
+        <div id="errorMessagePayment" class="text-danger d-none">Los campos de la forma de pago seleccionada no pueden
+          estar vacios</div>
+      </div>
+
+      <button type="submit" class="btn btn-lg btn-primary mt-2 mb-2 w-100" id="buy">Finalizar Compra</button>
+
+      <div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Forma de Pago</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <input type="radio" name="paymentType" onclick="selectPayMethod()" id="creditCardRadio" value="" checked>
+              <label class="form-check-label" for="creditCardRadio">Tarjeta de Credito</label>
+              <hr>
+              <label class="form-check-label" for="creditCardNumber">Número de Tarjeta</label>
+              <input type="text" id="creditCard" class="form-control paymentInput" minlength="19" maxlength="19"
+                required>
+              <div class="invalid-feedback">Debe seleccionar una forma de pago</div>
+
+              <label class="form-check-label mt-2" for="securityCode">Código de seg.</label>
+              <input type="text" id="securityCode" class="form-control paymentInput" minlength="3" maxlength="3"
+                required>
+
+              <label class="form-check-label mt-2" for="expiration">Vencimiento (MM/AA)</label>
+              <input type="text" id="expiration" class="form-control paymentInput" minlength="5" maxlength="5" required>
+
+              <input type="radio" name="paymentType" onclick="selectPayMethod()" id="bank" value="">
+              <label class="form-check-label mt-2" for="bank">Transferencia Bancaria</label>
+              <hr>
+              <label class="form-check-label mt-2" for="bankAccount">Número de cuenta</label>
+              <input type="text" id="bankAccount" class="form-control" required>
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" onclick="checkEmptyPayment()" class="btn btn-primary"
+                data-bs-dismiss="modal">Guardar Cambios</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </form>
+
   </main>
-  <footer class="text-muted">
+  <footer class=" text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
+          Programar</a> -
         2022</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
