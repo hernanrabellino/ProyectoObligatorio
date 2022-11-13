@@ -59,8 +59,11 @@ let getJSONData = async function (url) {
 }
 
 function formatName(str) {
-  if (str.includes('@')) {
-      return str.split('@')[0] }
+  if (!str){
+    return "Not Logged"
+  }
+  if (!str || str.includes('@')) {
+      return str.split('@')[0];}
   let resultStr = '';
   for (let token of str.split('_')) {
       token = token.charAt(0).toUpperCase() + token.slice(1);

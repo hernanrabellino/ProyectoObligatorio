@@ -24,15 +24,59 @@
         font-size: 3.5rem;
       }
     }
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
   </style>
 </head>
 
 <body>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container px-3 my-5 clearfix" id="container">
+      <h1 class="text-center">Perfil</h1>
+      <hr>
+    <form class="row g-3" id="profileForm">
+      <img class="" src="" alt="" id="tableBanner" class="rounded-3" style="width: 150px; height: 150px;">
+      <hr>
+      <div class="col-md-6">
+        <label for="firstName" class="form-label">Primer Nombre*</label>
+        <input type="text" class="form-control" name="firstName" id="firstName" value="" required>
+
       </div>
+      <div class="col-md-6">
+        <label for="secondName" class="form-label">Segundo Nombre</label>
+        <input type="text" class="form-control" name="secondName" id="secondName" value="">
+
+      </div>
+      <div class="col-md-6">
+        <label for="lastName" class="form-label">Primer Apellido*</label>
+        <input type="text" class="form-control" name="lastName" id="lastName" value="" required>
+
+      </div>
+      <div class="col-md-6">
+        <label for="" class="form-label">Segundo Apellido</label>
+        <input type="text" class="form-control" name="secondLastName" id="secondLastName" value="">
+
+      </div>
+      <div class="col-md-6">
+        <label for="validationCustom01" class="form-label">eMail</label>
+        <input type="text" class="form-control" name="" id="emailValue" value="">
+      </div>
+      <div class="col-md-6">
+        <label for="validationCustom02" class="form-label">Teléfono de Contacto*</label>
+        <input type="text" class="form-control" name="contact" id="contact" value="" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="customFile">Seleccione su imagen de perfil</label>
+        <input type="file" class="form-control" id="file">
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+      </div>
+    </form>
+
     </div>
   </main>
   <footer class="text-muted">
